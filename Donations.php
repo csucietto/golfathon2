@@ -99,7 +99,7 @@ if (isset($_POST['submit'])) {
                 <li><a href="AdministrationLogin.html" class="navbutton">Administration Login</a></li>
             </ul>
         </nav>
-        <div id="content">
+        <div class="content">
 
             <form name="donationForm" id="form" action="" method="POST">
 

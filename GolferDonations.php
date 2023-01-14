@@ -55,7 +55,7 @@ $all_donations = mysqli_query($con, $sqlSelectDonations);
                 <li><a href="../AdministrationLogin.html" class="navbutton">Administration Login</a></li>
             </ul>
         </nav>
-        <div id="GolferDonationsContent">
+        <div class="content">
             <table>
                 <tr>
                     <th>Donor Name</th>

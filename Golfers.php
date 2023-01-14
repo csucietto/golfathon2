@@ -53,7 +53,7 @@ $all_golfers = mysqli_query($con, $sqlSelectGolfers);
                 <li><a href="AdministrationLogin.html" class="navbutton">Administration Login</a></li>
             </ul>
         </nav>
-        <div id="GolfersContent">
+        <div class="content">
             <table>
                 <tr>
                     <th>Golfer Name</th>

@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
                 <li><a href="../AdministrationLogin.html" class="navbutton">Administration Login</a></li>
             </ul>
         </nav>
-        <div id="EditGolferContent">
+        <div class="content">
 
             <form name="editGolferForm" id="form" action="" method="POST">
                 <?php

@@ -72,7 +72,7 @@ if (isset($_POST['submit'])) {
                 <li><a href="../AdministrationLogin.html" class="navbutton">Administration Login</a></li>
             </ul>
         </nav>
-        <div id="ManageDonationContent">
+        <div class="content">
             <form name="manageDonationForm" id="form" action="" method="POST">
                 <label>Payment Method: </label> <br>
                 <p>
