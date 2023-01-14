@@ -136,13 +136,13 @@ if (isset($_POST['submit'])) {
             <h1>Event Pledge Total:
                 <?php
                 // To show the value to the user
-                echo `$` . $eventPledgeTotal;
+                echo '$' . $eventPledgeTotal;
                 ?>
             </h1>
             <h1>Event Collected Total:
                 <?php
                 // To show the value to the user
-                echo `$` . $eventPaidTotal;
+                echo '$' . $eventPaidTotal;
                 ?>
             </h1>
             <table>

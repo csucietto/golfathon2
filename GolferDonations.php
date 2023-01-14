@@ -92,7 +92,7 @@ $all_donations = mysqli_query($con, $sqlSelectDonations);
                         </td>
                         <td>
                             <?php
-                            echo `$` . $donation["Amount"];
+                            echo '$' . $donation["Amount"];
                             // To show the donor's info to the user
                             ?>
                         </td>
