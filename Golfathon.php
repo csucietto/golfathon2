@@ -38,7 +38,7 @@ $pledgeLeaderLast = array_pop($pledgeLeaderRow);
 //Get golferevent pairings from the selected year
 $sqlSelectGolfers = "SELECT COUNT(GolferID) FROM golfers2 WHERE GolferID IN (SELECT GolferID FROM golferevent WHERE EventID = '$currentEvent')";
 $all_golfers = mysqli_query($con, $sqlSelectGolfers);
-$countRow = mysqli_fetch_array($all_donationsRank, MYSQLI_ASSOC);
+$countRow = mysqli_fetch_array($all_golfers, MYSQLI_ASSOC);
 $countRow = array_reverse($countRow);
 $golfersCount = array_pop($countRow);
 ?>
