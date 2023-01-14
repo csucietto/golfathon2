@@ -13,6 +13,8 @@ $all_golfers = mysqli_query($con, $sqlSelectGolfers);
 $sqlSelectEvents = "Select EventID from events2 WHERE EventYear = (SELECT max(EventYear) FROM events2)";
 $currentEvents = mysqli_query($con, $sqlSelectEvents);
 $row = mysqli_fetch_array($currentEvents, MYSQLI_ASSOC);
+$currentEvent = array_pop(array_reverse($row));;
+
 
 // The following code checks if the submit button is clicked
 // and inserts the data in the database accordingly
@@ -28,8 +30,11 @@ if (isset($_POST['submit'])) {
     $zip = $_POST['zip'];
     $golfer = $_POST['golfer'];
     $amount = $_POST['amount'];
-    $status = $_POST['method'];
-    $currentEvent = array_pop(array_reverse($row));;
+    $method = $_POST['method'];
+    $status = "unpaid";
+    if($method == "credit card"){
+        $status = "paid";
+    }
 
     // Creating an insert query using SQL syntax and
     // storing it in a variable.
@@ -218,9 +223,9 @@ if (isset($_POST['submit'])) {
                 <p>
                     <label>Payment Method: </label> <br>
                     <select name="method">
-                        <option value="unpaid">Cash</option>
-                        <option value="unpaid">Check</option>
-                        <option vaule="paid">Credit Card</option>
+                        <option value="cash">Cash</option>
+                        <option value="check">Check</option>
+                        <option vaule="credit card">Credit Card</option>
                     </select>
                 </p>
                 <p>
