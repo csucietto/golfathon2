@@ -22,7 +22,7 @@ if (isset($_POST['submit'])) {
     // a javascript alert message is displayed
     // which says the data is inserted successfully
     if (mysqli_query($con, $sqlUpdateStatus)) {
-        echo "<h1>Thank you for your payment!</h1>";
+        echo "<h1>The payment status has been updated!</h1>";
     } else {
         echo "Error: " . $sql . "<br>" . $con->error;
     }
