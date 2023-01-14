@@ -104,8 +104,32 @@ if (isset($_POST['submit'])) {
                 </p>
             </form>
             <br />
-            <h1>Event Pledge Total: </h1>
-            <h1>Event Collected Total: </h1>
+            <h1>Event Pledge Total: 
+            <?php
+                            //Get latest event from events table
+                            $sqlSelectEventPledgeAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear'";
+                            $all_eventPledges = mysqli_query($con, $sqlSelectEventPledgeAmount);
+                            $row = mysqli_fetch_array($all_eventPledges, MYSQLI_ASSOC);
+                            $row = array_reverse($row);
+                            $eventPledgeTotal = array_pop($row);
+
+                            // To show the value to the user
+                            echo `$` . $eventPledgeTotal;
+                            ?>
+            </h1>
+            <h1>Event Collected Total: 
+            <?php
+                            //Get latest event from events table
+                            $sqlSelectEventPaidAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear'";
+                            $all_eventPaid = mysqli_query($con, $sqlSelectEventPaidAmount);
+                            $row = mysqli_fetch_array($all_eventPaid, MYSQLI_ASSOC);
+                            $row = array_reverse($row);
+                            $eventPaidTotal = array_pop($row);
+
+                            // To show the value to the user
+                            echo `$` . $eventPaidTotal;
+                            ?>
+            </h1>
             <table>
                 <tr>
                     <th>Golfer Name</th>
