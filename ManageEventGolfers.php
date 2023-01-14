@@ -9,6 +9,28 @@ $con = mysqli_connect("localhost", "root", "", "golfathon");
 $sqlSelectEvents = "SELECT * FROM events2";
 $all_events = mysqli_query($con, $sqlSelectEvents);
 
+    $selectedYear ='';
+
+//Get latest event from events table
+$sqlSelectEventPledgeAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear'";
+$all_eventPledges = mysqli_query($con, $sqlSelectEventPledgeAmount);
+$pledgesRow = mysqli_fetch_array($all_eventPledges, MYSQLI_ASSOC);
+$pledgesRow = array_reverse($pledgesRow);
+$eventPledgeTotal = array_pop($pledgesRow);
+
+//Get latest event from events table
+$sqlSelectEventPaidAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear' and Status = 'paid'";
+$all_eventPaid = mysqli_query($con, $sqlSelectEventPaidAmount);
+$paidRow = mysqli_fetch_array($all_eventPaid, MYSQLI_ASSOC);
+$paidRow = array_reverse($paidRow);
+$eventPaidTotal = array_pop($paidRow);
+
+    //Get golferevent pairings from the selected year
+	$sqlSelectGolfers = "Select * from golfers2 WHERE GolferID in (Select GolferID from golferevent WHERE EventID = '$selectedYear')";
+
+        $all_golfers = mysqli_query($con, $sqlSelectGolfers);
+    
+
 
 
 
