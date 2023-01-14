@@ -5,18 +5,28 @@ $con = mysqli_connect("localhost", "root", "", "golfathon");
 
 // mysqli_connect("servername","username","password","database_name")
 
-// Get all the categories from category table
+// Get all the events from the event table
 $sqlSelectEvents = "SELECT * FROM events2";
 $all_events = mysqli_query($con, $sqlSelectEvents);
 
-// The following code checks if the submit button is clicked
-// and inserts the data in the database accordingly
+// Check if the submit button is clicked
 if (isset($_POST['submit'])) {
     $selectedYear = $_POST['year'];
 
-    //Get latest event from events table
-    $sqlSelectGolfers = "Select GolferID from golferevent WHERE EventID = '$selectedYear'";
-    $all_golfers = mysqli_query($con, $sqlSelectGolfers);
+    //Get golferevent pairings from the selected year
+    $sqlSelectGolferEvents = "Select GolferID from golferevent WHERE EventID = '$selectedYear'";
+    $all_golferevents = mysqli_query($con, $sqlSelectGolferEvents);
+
+    // use a while loop to fetch data
+    // from the $all_categories variable
+    // and individually display as an option
+    while ($golferEvent = mysqli_fetch_array($all_golferevents, MYSQLI_ASSOC)) {
+        $golferID = $golferEvent["GolferID"];
+
+        //Get latest event from events table
+        $sqlSelectGolfers = "Select * from golfers2 WHERE GolferID = '$golferID'";
+        $all_golfers = mysqli_query($con, $sqlSelectGolfers);
+    }
 }
 ?>
 
