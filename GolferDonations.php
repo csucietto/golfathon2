@@ -37,7 +37,7 @@ $all_donations = mysqli_query($con, $sqlSelectDonations);
 		-->
         <title>Assignment6</title>
         <meta charset=utf-8>
-        <link rel="stylesheet" href="golfathon.css">
+        <link rel="stylesheet" href="../golfathon.css">
         <script src="http://cdnjs.cloudfare.com/ajax/libs/html5shiv/3.6/html5shiv/min.js"></script>
     </head>
 
