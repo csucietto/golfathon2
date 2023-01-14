@@ -225,7 +225,7 @@ if (isset($_POST['submit'])) {
                     <select name="method">
                         <option value="cash">Cash</option>
                         <option value="check">Check</option>
-                        <option vaule="credit card">Credit Card</option>
+                        <option value="credit card">Credit Card</option>
                     </select>
                 </p>
                 <p>
