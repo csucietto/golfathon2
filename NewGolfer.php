@@ -27,7 +27,7 @@
         
    }  
 
-		sssssssssssssssssss	
+		
 			
 			$intGolferID = mysqli_insert_id($con);
 
