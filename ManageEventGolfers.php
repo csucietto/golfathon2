@@ -131,20 +131,32 @@ if (isset($_POST['submit'])) {
                         </td>
                         <td>
                             <?php
-                            echo "Placeholder";
-                            // To show the golfer's name to the user
+                            //Get latest event from events table
+                            $sqlSelectPledgeAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear' AND GolferID = '$golfer[GolferID]'";
+                            $all_pledges = mysqli_query($con, $sqlSelectPledgeAmount);
+                            $row = mysqli_fetch_array($all_pledges, MYSQLI_ASSOC);
+                            $pledgeTotal = array_pop(array_reverse($row));
+                            // To show the value to the user
+                            echo `$` . $pledgeTotal;
                             ?>
                         </td>
                         <td>
                             <?php
-                            echo "Placeholder";
-                            // To show the golfer's name to the user
+                            //Get latest event from events table
+                            $sqlSelectDonationsAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear' AND GolferID = '$golfer[GolferID]' AND Status = 'paid'";
+                            $all_donations = mysqli_query($con, $sqlSelectDonationsAmount);
+                            $row = mysqli_fetch_array($all_donations, MYSQLI_ASSOC);
+                            $donationsTotal = array_pop(array_reverse($row));
+                            // To show the value to the user
+                            echo `$` . $donationsTotal;
                             ?>
                         </td>
                         <td>
                             <a href="<?php echo "ManageGolferDonations.php/?" . $golfer["GolferID"];
                                         // The value we usually set is the primary key
                                         ?>">
+                                Donation Status
+                            </a>
                         </td>
                     </tr>
 

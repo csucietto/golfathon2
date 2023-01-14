@@ -221,7 +221,7 @@ if (isset($_POST['submit'])) {
 
                 <p>
                     <label>Donation Amount: </label> <br>
-                    <input type="text" name="amount" />
+                    <input type="number" name="amount" />
                 </p>
                 <p>
                     <label>Payment Method: </label> <br>
