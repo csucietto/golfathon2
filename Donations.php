@@ -44,6 +44,9 @@ if (isset($_POST['submit'])) {
     if (mysqli_query($con, $sql_insert)) {
         echo '<script>alert("Product added successfully")</script>';
     }
+    else {
+        echo "Error: " . $sql . "<br>" . mysqli_error($con);
+    }
 }
 ?>
 

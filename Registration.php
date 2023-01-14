@@ -9,6 +9,8 @@ $con = mysqli_connect("localhost", "root", "", "golfathon");
 $sqlSelectEvents = "Select EventID from events2 WHERE EventYear = (SELECT max(EventYear) FROM events2)";
 $currentEvents = mysqli_query($con, $sqlSelectEvents);
 $row = mysqli_fetch_array($currentEvents, MYSQLI_ASSOC);
+$currentEvent = $row[0];
+
 
 // The following code checks if the submit button is clicked
 // and inserts the data in the database accordingly
@@ -24,7 +26,6 @@ if (isset($_POST['submit'])) {
     $zip = mysqli_real_escape_string($con, $_POST['zip']);
     $gender = mysqli_real_escape_string($con, $_POST['gender']);
     $handicap = mysqli_real_escape_string($con, $_POST['handicap']);
-    $currentEvent = $row[0];
 
     /**
      * @todo: Check if email address is already in table and do not duplicate golfers 
@@ -40,10 +41,10 @@ if (isset($_POST['submit'])) {
     // a javascript alert message is displayed
     // which says the data is inserted successfully
     if (mysqli_query($con, $sqlInsertGolfer)) {
-        $golferid = mysqli_insert_id($conn);
-        echo '<script>alert("You have successfully registered for Golfathon!")</script>';
+        $golferid = mysqli_insert_id($con);
+        echo "<h1> You have successfully registered for Golfathon!</h1>";  
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($con);
+        echo "Error: " . $sql . "<br>" . $con->error;
     }
 
     // Creating an insert query using SQL syntax and
@@ -57,9 +58,9 @@ if (isset($_POST['submit'])) {
     // a javascript alert message is displayed
     // which says the data is inserted successfully
     if (mysqli_query($con, $sqlInsertGolferEvent)) {
-        echo '<script>alert("You have successfully registered for the current event!")</script>';
+        echo "<h1> You have successfully registered for the current event!</h1>";  
     } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($con);
+        echo "Error: " . $sql . "<br>" . $con->error;
     }
 }
 ?>
