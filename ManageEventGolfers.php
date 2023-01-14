@@ -9,6 +9,21 @@ $con = mysqli_connect("localhost", "root", "", "golfathon");
 $sqlSelectEvents = "SELECT * FROM events2";
 $all_events = mysqli_query($con, $sqlSelectEvents);
 
+//Get latest event from events table
+$sqlSelectEventPledgeAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear'";
+$all_eventPledges = mysqli_query($con, $sqlSelectEventPledgeAmount);
+$pledgesRow = mysqli_fetch_array($all_eventPledges, MYSQLI_ASSOC);
+$pledgesRow = array_reverse($pledgesRow);
+$eventPledgeTotal = array_pop($pledgesRow);
+
+//Get latest event from events table
+$sqlSelectEventPaidAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear'";
+$all_eventPaid = mysqli_query($con, $sqlSelectEventPaidAmount);
+$paidRow = mysqli_fetch_array($all_eventPaid, MYSQLI_ASSOC);
+$paidRow = array_reverse($paidRow);
+$eventPaidTotal = array_pop($paidRow);
+
+
 // Check if the submit button is clicked
 if (isset($_POST['submit'])) {
     $selectedYear = $_POST['year'];
@@ -104,31 +119,17 @@ if (isset($_POST['submit'])) {
                 </p>
             </form>
             <br />
-            <h1>Event Pledge Total: 
-            <?php
-                            //Get latest event from events table
-                            $sqlSelectEventPledgeAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear'";
-                            $all_eventPledges = mysqli_query($con, $sqlSelectEventPledgeAmount);
-                            $row = mysqli_fetch_array($all_eventPledges, MYSQLI_ASSOC);
-                            $row = array_reverse($row);
-                            $eventPledgeTotal = array_pop($row);
-
-                            // To show the value to the user
-                            echo `$` . $eventPledgeTotal;
-                            ?>
+            <h1>Event Pledge Total:
+                <?php
+                // To show the value to the user
+                echo `$` . $eventPledgeTotal;
+                ?>
             </h1>
-            <h1>Event Collected Total: 
-            <?php
-                            //Get latest event from events table
-                            $sqlSelectEventPaidAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear'";
-                            $all_eventPaid = mysqli_query($con, $sqlSelectEventPaidAmount);
-                            $row = mysqli_fetch_array($all_eventPaid, MYSQLI_ASSOC);
-                            $row = array_reverse($row);
-                            $eventPaidTotal = array_pop($row);
-
-                            // To show the value to the user
-                            echo `$` . $eventPaidTotal;
-                            ?>
+            <h1>Event Collected Total:
+                <?php
+                // To show the value to the user
+                echo `$` . $eventPaidTotal;
+                ?>
             </h1>
             <table>
                 <tr>
