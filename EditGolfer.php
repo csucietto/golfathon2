@@ -29,7 +29,7 @@ if (isset($_POST['submit'])) {
     // Creating an insert query using SQL syntax and
     // storing it in a variable.
     $sqlUpdateGolfer =
-        "UPDATE golfers2 SET FirstName = '$firstname', LastName = '$lastname', Email = '$email', Phone = '$phone', `Address` = '$address', City = '$city', `State` = '$state', Zip = '$zip', Gender = '$gender', Handicap = '$handicap',  WHERE GolferID like '$golferid'";
+        "UPDATE golfers2 SET FirstName = '$firstname', LastName = '$lastname', Email = '$email', Phone = '$phone', `Address` = '$address', City = '$city', `State` = '$state', Zip = '$zip', Gender = '$gender', Handicap = '$handicap'  WHERE GolferID like '$golferid'";
 
     // The following code attempts to execute the SQL query
     // if the query executes with no errors
