@@ -42,7 +42,7 @@ $all_donations = mysqli_query($con, $sqlSelectDonations);
     </head>
 
     <body>
-        <b>Golfathon</b>
+        <h1 class="title">Golfathon</h1>
         <br>
         <br>
         <nav class="Navigation">

@@ -62,9 +62,7 @@ $golfersCount = array_pop($countRow);
 </head>
 
 <body>
-    <b>Golfathon</b>
-    <br>
-    <br>
+    <h1 class="title">Golfathon</h1>
     <nav class="Navigation">
         <ul>
             <li><a href="Golfathon.php" class="navbutton">Home</a></li>

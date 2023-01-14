@@ -55,9 +55,7 @@ $sqlSelectGolfers2 = "Select golfers.golfers2.FirstName, golfers2.LastName, golf
 </head>
 
 <body>
-    <b>Golfathon</b>
-    <br>
-    <br>
+    <h1 class="title">Golfathon</h1>
     <nav class="Navigation">
         <ul>
             <li><a href="Golfathon.php" class="navbutton">Home</a></li>
@@ -91,7 +89,6 @@ $sqlSelectGolfers2 = "Select golfers.golfers2.FirstName, golfers2.LastName, golf
 
         <table id="golferStats" class="center">
             <tr>
-                <th>Rank</th>
                 <th>Golfer Name</th>
                 <th>Handicap</th>
                 <th>Total Pledged</th>
@@ -107,9 +104,6 @@ $sqlSelectGolfers2 = "Select golfers.golfers2.FirstName, golfers2.LastName, golf
             )) :;
             ?>
                 <tr>
-                    <td>
-                        1
-                    </td>
                     <td>
                         <?php
                         echo $golfer["FirstName"] . " " . $golfer["LastName"];
@@ -205,7 +199,7 @@ $sqlSelectGolfers2 = "Select golfers.golfers2.FirstName, golfers2.LastName, golf
                 }
             }
         }
-        sortTable(3);
+        sortTable(2);
     </script>
 </body>
 
