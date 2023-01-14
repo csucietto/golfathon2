@@ -94,6 +94,8 @@ $golfersCount = array_pop($countRow);
             echo $golfersCount;
             ?>
         </h2><br>
+		<p>Golfathon is a tournament that attracts some of the best local talent around to raise money for charity. To register a golfer navigate to the Registration page, to view participents navigate to the Golfers page.
+		Donations can be made via the Donation page. To see who is winning in the event, navigate to the Statistics page. Administrators to add events and manage golfers navigate to Administration login.</p>
 </body>
 
 </html>
