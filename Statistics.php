@@ -5,58 +5,33 @@ $con = mysqli_connect("localhost", "root", "", "golfathon");
 
 // mysqli_connect("servername","username","password","database_name")
 
-// Get all the events from the event table
-$sqlSelectEvents = "SELECT * FROM events2";
-$all_events = mysqli_query($con, $sqlSelectEvents);
-
-$selectedYear = '';
+//Get latest event from events table
+$sqlSelectEvents = "Select EventID from events2 WHERE EventYear = (SELECT max(EventYear) FROM events2)";
+$currentEvents = mysqli_query($con, $sqlSelectEvents);
+$row = mysqli_fetch_array($currentEvents, MYSQLI_ASSOC);
+$row = array_reverse($row);
+$currentEvent = array_pop($row);
 
 //Get latest event from events table
-$sqlSelectEventPledgeAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear'";
+$sqlSelectEventPledgeAmount = "Select SUM(Amount) from donations WHERE EventID = '$currentEvent'";
 $all_eventPledges = mysqli_query($con, $sqlSelectEventPledgeAmount);
 $pledgesRow = mysqli_fetch_array($all_eventPledges, MYSQLI_ASSOC);
 $pledgesRow = array_reverse($pledgesRow);
 $eventPledgeTotal = array_pop($pledgesRow);
 
 //Get latest event from events table
-$sqlSelectEventPaidAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear' and Status = 'paid'";
-$all_eventPaid = mysqli_query($con, $sqlSelectEventPaidAmount);
-$paidRow = mysqli_fetch_array($all_eventPaid, MYSQLI_ASSOC);
-$paidRow = array_reverse($paidRow);
-$eventPaidTotal = array_pop($paidRow);
+$sqlSelectEventPledgeCount = "Select Count(*) from donations WHERE EventID = '$currentEvent'";
+$all_eventPledgeCount = mysqli_query($con, $sqlSelectEventPaidAmount);
+$pledgeCountRow = mysqli_fetch_array($all_eventPledgeCount, MYSQLI_ASSOC);
+$pledgeCountRow = array_reverse($pledgeCountRow);
+$eventPledgeCount = array_pop($pledgeCountRow);
+
+$eventPledgeAverage = $eventPledgeTotal / $eventPledgeCount;
 
 //Get golferevent pairings from the selected year
-$sqlSelectGolfers = "Select * from golfers2 WHERE GolferID in (Select GolferID from golferevent WHERE EventID = '$selectedYear')";
-
+$sqlSelectGolfers = "Select * from golfers2 WHERE GolferID in (Select GolferID from golferevent WHERE EventID = '$currentEvent')";
 $all_golfers = mysqli_query($con, $sqlSelectGolfers);
 
-
-
-
-
-// Check if the submit button is clicked
-if (isset($_POST['submit'])) {
-    $selectedYear = $_POST['year'];
-
-    //Get latest event from events table
-    $sqlSelectEventPledgeAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear'";
-    $all_eventPledges = mysqli_query($con, $sqlSelectEventPledgeAmount);
-    $pledgesRow = mysqli_fetch_array($all_eventPledges, MYSQLI_ASSOC);
-    $pledgesRow = array_reverse($pledgesRow);
-    $eventPledgeTotal = array_pop($pledgesRow);
-
-    //Get latest event from events table
-    $sqlSelectEventPaidAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear' and Status = 'paid'";
-    $all_eventPaid = mysqli_query($con, $sqlSelectEventPaidAmount);
-    $paidRow = mysqli_fetch_array($all_eventPaid, MYSQLI_ASSOC);
-    $paidRow = array_reverse($paidRow);
-    $eventPaidTotal = array_pop($paidRow);
-
-    //Get golferevent pairings from the selected year
-    $sqlSelectGolfers = "Select * from golfers2 WHERE GolferID in (Select GolferID from golferevent WHERE EventID = '$selectedYear')";
-
-    $all_golfers = mysqli_query($con, $sqlSelectGolfers);
-}
 ?>
 
 
@@ -100,51 +75,27 @@ if (isset($_POST['submit'])) {
                 <li><a href="AdministrationLogin.html" class="navbutton">Administration Login</a></li>
             </ul>
         </nav>
-        <div id="ManageGolfersContent">
-            <form name="selectYearForm" id="form" action="" method="POST">
-                <p>
-                    <label>Event Year: </label> <br>
-                    <select name="year">
-                        <?php
-                        // use a while loop to fetch data
-                        // from the $all_categories variable
-                        // and individually display as an option
-                        while ($year = mysqli_fetch_array(
-                            $all_events,
-                            MYSQLI_ASSOC
-                        )) :;
-                        ?>
-                            <option value="<?php echo $year["EventID"];
-                                            // The value we usually set is the primary key
-                                            ?>">
-                                <?php
-                                echo $year["EventYear"];
-                                // To show the category name to the user
-                                ?>
-                            </option>
-                        <?php
-                        endwhile;
-                        // While loop must be terminated
-                        ?>
-                    </select>
-                </p>
-                <p>
-                    <input class="button" type="submit" id="submitbtn" name="submit" value="Select" />
-                </p>
-            </form>
-            <br />
-            <h1>Event Pledge Total:
+        <div id="StatisticsContent">
+            <h1>Current Event Stats</h1>
+            <h2>Total Raised: 
                 <?php
                 // To show the value to the user
                 echo `$` . $eventPledgeTotal;
-                ?>
-            </h1>
-            <h1>Event Collected Total:
-                <?php
+                ?></h2><br>
+            <h2>Number of Donations: 
+            <?php
                 // To show the value to the user
-                echo `$` . $eventPaidTotal;
+                echo `$` . $eventPledgeCount;
                 ?>
-            </h1>
+            </h2><br>
+            <h2>Average Donation: 
+            <?php
+                // To show the value to the user
+                echo `$` . $eventPledgeAverage;
+                ?>
+            </h2><br>
+            <h2>Leaderboard:</h2><br>
+
             <table>
                 <tr>
                     <th>Golfer Name</th>
