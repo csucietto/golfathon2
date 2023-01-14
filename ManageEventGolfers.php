@@ -9,6 +9,13 @@ $con = mysqli_connect("localhost", "root", "", "golfathon");
 $sqlSelectEvents = "SELECT * FROM events2";
 $all_events = mysqli_query($con, $sqlSelectEvents);
 
+
+
+
+// Check if the submit button is clicked
+if (isset($_POST['submit'])) {
+    $selectedYear = $_POST['year'];
+
 //Get latest event from events table
 $sqlSelectEventPledgeAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear'";
 $all_eventPledges = mysqli_query($con, $sqlSelectEventPledgeAmount);
@@ -17,31 +24,17 @@ $pledgesRow = array_reverse($pledgesRow);
 $eventPledgeTotal = array_pop($pledgesRow);
 
 //Get latest event from events table
-$sqlSelectEventPaidAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear'";
+$sqlSelectEventPaidAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear' and Status = 'paid'";
 $all_eventPaid = mysqli_query($con, $sqlSelectEventPaidAmount);
 $paidRow = mysqli_fetch_array($all_eventPaid, MYSQLI_ASSOC);
 $paidRow = array_reverse($paidRow);
 $eventPaidTotal = array_pop($paidRow);
 
-
-// Check if the submit button is clicked
-if (isset($_POST['submit'])) {
-    $selectedYear = $_POST['year'];
-
     //Get golferevent pairings from the selected year
-    $sqlSelectGolferEvents = "Select GolferID from golferevent WHERE EventID = '$selectedYear'";
-    $all_golferevents = mysqli_query($con, $sqlSelectGolferEvents);
+	$sqlSelectGolfers = "Select * from golfers2 WHERE GolferID in (Select GolferID from golferevent WHERE EventID = '$selectedYear')";
 
-    // use a while loop to fetch data
-    // from the $all_categories variable
-    // and individually display as an option
-    while ($golferEvent = mysqli_fetch_array($all_golferevents, MYSQLI_ASSOC)) {
-        $golferID = $golferEvent["GolferID"];
-
-        //Get latest event from events table
-        $sqlSelectGolfers = "Select * from golfers2 WHERE GolferID = '$golferID'";
         $all_golfers = mysqli_query($con, $sqlSelectGolfers);
-    }
+    
 }
 ?>
 
