@@ -60,8 +60,6 @@ if (isset($_POST['submit'])) {
 
     <body>
         <h1 class="title">Golfathon</h1>
-        <br>
-        <br>
         <nav class="Navigation">
             <ul>
                 <li><a href="../Golfathon.php" class="navbutton">Home</a></li>
