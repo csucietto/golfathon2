@@ -105,7 +105,7 @@ $all_donations = mysqli_query($con, $sqlSelectDonations);
                             ?>
                         </td>
                         <td>
-                            <a href="<?php echo "ManageDonation.php/?id=" . $donation["DonationID"];
+                            <a href="<?php echo "../ManageDonation.php/?id=" . $donation["DonationID"];
                                         // The value we usually set is the primary key
                                         ?>">
                                 <?php
