@@ -18,18 +18,18 @@ $row = mysqli_fetch_array($currentEvents, MYSQLI_ASSOC);
 // and inserts the data in the database accordingly
 if (isset($_POST['submit'])) {
     // Store the sql data in the variables
-    $firstname = mysqli_real_escape_string($con, $_POST['firstname']);
-    $lastname = mysqli_real_escape_string($con, $_POST['lastname']);
-    $email = mysqli_real_escape_string($con, $_POST['email']);
-    $phone = mysqli_real_escape_string($con, $_POST['phone']);
-    $address = mysqli_real_escape_string($con, $_POST['address']);
-    $city = mysqli_real_escape_string($con, $_POST['city']);
-    $state = mysqli_real_escape_string($con, $_POST['state']);
-    $zip = mysqli_real_escape_string($con, $_POST['zip']);
-    $golfer = mysqli_real_escape_string($con, $_POST['golfer']);
-    $amount = mysqli_real_escape_string($con, $_POST['amount']);
-    $status = mysqli_real_escape_string($con, $_POST['method']);
-    $currentEvent = $row[0];
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $address = $_POST['address'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $zip = $_POST['zip'];
+    $golfer = $_POST['golfer'];
+    $amount = $_POST['amount'];
+    $status = $_POST['method'];
+    $currentEvent = array_pop(array_reverse($row));;
 
     // Creating an insert query using SQL syntax and
     // storing it in a variable.
@@ -93,7 +93,7 @@ if (isset($_POST['submit'])) {
         </nav>
         <div id="DonationContent">
 
-            <form name="donationForm" id="form" method="POST">
+            <form name="donationForm" id="form" action="" method="POST">
 
                 <b>Donations</b>
 
@@ -224,7 +224,7 @@ if (isset($_POST['submit'])) {
                     </select>
                 </p>
                 <p>
-                    <input class="button" type="submit" id="submitbtn" value="Donate" />
+                    <input class="button" type="submit" id="submitbtn" name="submit" value="Donate" />
                     <input class="button" type="reset" id="clearbtn" value="Clear" />
                 </p>
 
