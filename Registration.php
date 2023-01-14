@@ -9,23 +9,23 @@ $con = mysqli_connect("localhost", "root", "", "golfathon");
 $sqlSelectEvents = "Select EventID from events2 WHERE EventYear = (SELECT max(EventYear) FROM events2)";
 $currentEvents = mysqli_query($con, $sqlSelectEvents);
 $row = mysqli_fetch_array($currentEvents, MYSQLI_ASSOC);
-$currentEvent = $row[0];
+$currentEvent = array_pop(array_reverse($row));
 
 
 // The following code checks if the submit button is clicked
 // and inserts the data in the database accordingly
 if (isset($_POST['submit'])) {
     // Store the sql data in the variables
-    $firstname = mysqli_real_escape_string($con, $_POST['firstname']);
-    $lastname = mysqli_real_escape_string($con, $_POST['lastname']);
-    $email = mysqli_real_escape_string($con, $_POST['email']);
-    $phone = mysqli_real_escape_string($con, $_POST['phone']);
-    $address = mysqli_real_escape_string($con, $_POST['address']);
-    $city = mysqli_real_escape_string($con, $_POST['city']);
-    $state = mysqli_real_escape_string($con, $_POST['state']);
-    $zip = mysqli_real_escape_string($con, $_POST['zip']);
-    $gender = mysqli_real_escape_string($con, $_POST['gender']);
-    $handicap = mysqli_real_escape_string($con, $_POST['handicap']);
+    $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $address = $_POST['address'];
+    $city = $_POST['city'];
+    $state = $_POST['state'];
+    $zip = $_POST['zip'];
+    $gender = $_POST['gender'];
+    $handicap = $_POST['handicap'];
 
     /**
      * @todo: Check if email address is already in table and do not duplicate golfers 
@@ -106,7 +106,7 @@ if (isset($_POST['submit'])) {
         </nav>
         <div id="RegistrationContent">
 
-            <form name="registrationForm" id="form" method="POST">
+            <form name="registrationForm" id="form" action="" method="POST">
                 <b>Golfer Registration</b>
                 <p>
                     <label>First Name: </label> <br>
@@ -204,7 +204,7 @@ if (isset($_POST['submit'])) {
                     <input type="text" name="handicap" />
                 </p>
                 <p>
-                    <input class="button" type="submit" id="submitbtn" value="Register" />
+                    <input class="button" type="submit" id="submitbtn" name="submit" value="Register" />
                     <input class="button" type="reset" id="clearbtn" value="Clear" />
                 </p>
             </form>
