@@ -4,7 +4,7 @@
           
             
           
-            $sql = "insert into events (EventID, EventYear) values('$eventyear', '$eventyear')";  
+            $sql = "insert into events2 (EventID, EventYear) values('$eventyear', '$eventyear')";  
 
               
 			if ($con->query($sql) === TRUE) {
