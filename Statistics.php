@@ -144,7 +144,7 @@ $sqlSelectGolfers2 = "Select golfers.golfers2.FirstName, golfers2.LastName, golf
             <h2>Number of Donations:
                 <?php
                 // To show the value to the user
-                echo '$' . $eventPledgeCount;
+                echo $eventPledgeCount;
                 ?>
             </h2><br>
             <h2>Average Donation:
