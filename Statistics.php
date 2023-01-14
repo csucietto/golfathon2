@@ -68,7 +68,7 @@ $sqlSelectGolfers2 = "Select golfers.golfers2.FirstName, golfers2.LastName, golf
             <li><a href="AdministrationLogin.html" class="navbutton">Administration Login</a></li>
         </ul>
     </nav>
-    <div id="StatisticsContent">
+    <div class="content">
         <h1>Current Event Stats</h1>
         <h2>Total Raised:
             <?php

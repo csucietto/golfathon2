@@ -106,7 +106,7 @@ if (isset($_POST['submit'])) {
                 <li><a href="AdministrationLogin.html" class="navbutton">Administration Login</a></li>
             </ul>
         </nav>
-        <div id="RegistrationContent">
+        <div class="content">
 
             <form name="registrationForm" id="form" action="" method="POST">
                 <b>Golfer Registration</b>
