@@ -79,7 +79,7 @@ if (isset($_POST['submit'])) {
                                             // The value we usually set is the primary key
                                             ?>">
                                 <?php
-                                echo $golfer["EventYear"];
+                                echo $year["EventYear"];
                                 // To show the category name to the user
                                 ?>
                             </option>
