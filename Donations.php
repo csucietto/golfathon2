@@ -6,7 +6,7 @@ $con = mysqli_connect("localhost", "root", "", "golfathon");
 // mysqli_connect("servername","username","password","database_name")
 
 // Get all the categories from category table
-$sqlSelectGolfers = "SELECT * FROM 'golfers2'";
+$sqlSelectGolfers = "SELECT * FROM golfers2";
 $all_golfers = mysqli_query($con, $sqlSelectGolfers);
 
 //Get latest event from events table
@@ -34,7 +34,7 @@ if (isset($_POST['submit'])) {
     // Creating an insert query using SQL syntax and
     // storing it in a variable.
     $sql_insert =
-        "INSERT INTO 'donations'('GolferID', 'EventID', 'Amount', 'Method', 'Status', 'FirstName', 'LastName', 'Email', 'Phone', 'Address', 'City', 'State', 'Zip')
+        "INSERT INTO donations(GolferID, EventID, Amount, Method, `Status`, FirstName, LastName, Email, Phone, `Address`, City, `State`, Zip)
 			VALUES ('$golfer', '$currentEvent', '$amount','$method', '$status', '$firstname', '$lastname', '$email', '$phone', '$address', '$city', '$state', '$zip' )";
 
     // The following code attempts to execute the SQL query
