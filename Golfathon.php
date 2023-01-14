@@ -30,7 +30,7 @@ $golferPledgeLeader = array_pop($pledgeCountRow);
 //Get golferevent pairings from the selected year
 $sqlSelectPledgeLeader = "SELECT FirstName, LastName FROM golfers2 WHERE GolferID LIKE '$golferPledgeLeader'";
 $all_leaders = mysqli_query($con, $sqlSelectPledgeLeader);
-$pledgeLeaderRow = mysqli_fetch_array($all_donationsRank, MYSQLI_ASSOC);
+$pledgeLeaderRow = mysqli_fetch_array($all_leaders, MYSQLI_ASSOC);
 $pledgeLeaderRow = array_reverse($pledgeLeaderRow);
 $pledgeLeaderFirst = array_pop($pledgeLeaderRow);
 $pledgeLeaderLast = array_pop($pledgeLeaderRow);
