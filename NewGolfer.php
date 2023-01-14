@@ -12,7 +12,7 @@ $all_golfers = mysqli_query($con, $sqlSelectGolfers);
 //Get latest event from events table
 $sqlSelectEvents = "Select EventID from events2 WHERE EventYear = (SELECT max(EventYear) FROM events2)";
 $currentEvents = mysqli_query($con, $sqlSelectEvents);
-$row = mysqli_fetch_array($currentEvents, MYSQLI_ASSOC);  
+$row = mysqli_fetch_array($currentEvents, MYSQLI_ASSOC);
 
 // The following code checks if the submit button is clicked
 // and inserts the data in the database accordingly
@@ -46,13 +46,7 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>    
-    
-    
-    
-    
-    
-    
-    
+
     <?php
     include('connection.php');
     $golferID = $_POST['EventYear'];
@@ -67,9 +61,6 @@ if (isset($_POST['submit'])) {
     $gender = $_POST['gender'];
     $handicap = $_POST['handicap'];
 
-
-
-
     $sql = "insert into golfers2 ( FirstName, LastName,Email, Phone, Address, City, State, Zip, Gender, Handicap) values( '$firstname','$lastname','$email', '$phone','$address','$city', '$state','$zip', '$gender','$handicap')";
 
     if (mysqli_query($con, $sql)) {
@@ -80,11 +71,7 @@ if (isset($_POST['submit'])) {
         throw new Exception("Error: " . $insertGolfer . "<br>" . mysqli_error($con));
     }
 
-
-
     $intGolferID = mysqli_insert_id($con);
-
-
 
     $sql = "Select EventID from Events2 WHERE EventYear = (SELECT max(EventYear) FROM Events2)";
     $result = mysqli_query($con, $sql);

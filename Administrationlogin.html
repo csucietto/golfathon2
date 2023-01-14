@@ -1,39 +1,43 @@
-    <html>  
-    <head>  
-        <title>PHP login system</title>  
-        <link rel="stylesheet" type="text/css" href = "style.css">  
-		<link rel="stylesheet" href="golfathon.css">
-		
-    </head>  
-    <body>  
-				<b>Golfathon</b> 
-		<br>
-		<br>
-		<nav class="Navigation">
-		<ul>
-		<li><a href ="Registration.php"class= "navbutton">Registration</a></li>
-		<li><a href ="Golfers.php"class= "navbutton">Golfers</a></li>
-		<li><a href ="Donations.php"class= "navbutton">Donations</a></li>
-		<li><a href ="Statistics.php"class= "navbutton">Statistics</a></li>
-		<li><a href ="AdministrationLogin.html"class= "navbutton">Administration Login</a></li>
-		</ul>
-		</nav>
-		
-        <div id="login"> 
-             
-			<form name="loginForm" id="form" action="authentication.php" method="POST">
-                <p>  
-                    <label> UserName: </label>  
-					<input type="text" id="user" name="user" />
-                </p>
-                <p>  
-                    <label> Password: </label>  
-					<input type="password" id="pass" name="pass" />
-                </p>  
-                <p>     
-					<input type="submit" id="btn" value="Login" />
-                </p>  
-            </form>  
-        </div>   
-    </body>     
-    </html>   
+<html>
+
+<head>
+    <title>PHP login system</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="golfathon.css">
+
+</head>
+
+<body>
+    <b>Golfathon</b>
+    <br>
+    <br>
+    <nav class="Navigation">
+        <ul>
+            <li><a href="Golfathon.php" class="navbutton">Home</a></li>
+            <li><a href="Registration.php" class="navbutton">Registration</a></li>
+            <li><a href="Golfers.php" class="navbutton">Golfers</a></li>
+            <li><a href="Donations.php" class="navbutton">Donations</a></li>
+            <li><a href="Statistics.php" class="navbutton">Statistics</a></li>
+            <li><a href="AdministrationLogin.html" class="navbutton">Administration Login</a></li>
+        </ul>
+    </nav>
+
+    <div id="login">
+
+        <form name="loginForm" id="form" action="authentication.php" method="POST">
+            <p>
+                <label> UserName: </label>
+                <input type="text" id="user" name="user" />
+            </p>
+            <p>
+                <label> Password: </label>
+                <input type="password" id="pass" name="pass" />
+            </p>
+            <p>
+                <input type="submit" id="btn" value="Login" />
+            </p>
+        </form>
+    </div>
+</body>
+
+</html>

@@ -10,7 +10,7 @@ $sqlSelectEvents = "SELECT * FROM events2";
 $all_events = mysqli_query($con, $sqlSelectEvents);
 
 $selectedYear = '';
-    
+
 //Get latest event from events table
 $sqlSelectEventPledgeAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear'";
 $all_eventPledges = mysqli_query($con, $sqlSelectEventPledgeAmount);
@@ -93,6 +93,7 @@ if (isset($_POST['submit'])) {
         <br>
         <nav class="Navigation">
             <ul>
+                <li><a href="Golfathon.php" class="navbutton">Home</a></li>
                 <li><a href="Registration.php" class="navbutton">Registration</a></li>
                 <li><a href="Golfers.php" class="navbutton">Golfers</a></li>
                 <li><a href="Donations.php" class="navbutton">Donations</a></li>

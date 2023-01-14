@@ -46,54 +46,54 @@ $golfersCount = array_pop($countRow);
 
 <!DOCTYPE html>
 
-    <html>
+<html>
 
-    <head>
-        <!--
+<head>
+    <!--
 		Name: Caleb Sucietto
 		Class: IT-117-400 Web-App
 		Abstract: Golfathon
 		-->
-        <title>Assignment6</title>
-        <meta charset=utf-8>
-        <link rel="stylesheet" href="golfathon.css">
-        <script src="http://cdnjs.cloudfare.com/ajax/libs/html5shiv/3.6/html5shiv/min.js"></script>
- 
-    </head>
+    <title>Assignment6</title>
+    <meta charset=utf-8>
+    <link rel="stylesheet" href="golfathon.css">
+    <script src="http://cdnjs.cloudfare.com/ajax/libs/html5shiv/3.6/html5shiv/min.js"></script>
 
-    <body>
-        <b>Golfathon</b>
-        <br>
-        <br>
-        <nav class="Navigation">
-            <ul>
-                <li><a href="Registration.php" class="navbutton">Registration</a></li>
-                <li><a href="Golfers.php" class="navbutton">Golfers</a></li>
-                <li><a href="Donations.php" class="navbutton">Donations</a></li>
-                <li><a href="Statistics.php" class="navbutton">Statistics</a></li>
-                <li><a href="AdministrationLogin.html" class="navbutton">Administration Login</a></li>
-            </ul>
-        </nav>
-        <div id="StatisticsContent">
-            <h1>Current Event Stats</h1>
-            <h2>Total Raised:
-                <?php
-                // To show the value to the user
-                echo '$' . $eventPledgeTotal;
-                ?></h2><br>
-            <h2>Donations Leader:
-                <?php
-                // To show the value to the user
-                echo $pledgeLeaderFirst . " " . $pledgeLeaderLast;
-                ?>
-            </h2><br>
-            <h2>Average Donation:
-                <?php
-                // To show the value to the user
-                echo $golfersCount;
-                ?>
-            </h2><br>
-    </body>
+</head>
 
-    </html>
-	
+<body>
+    <b>Golfathon</b>
+    <br>
+    <br>
+    <nav class="Navigation">
+        <ul>
+            <li><a href="Golfathon.php" class="navbutton">Home</a></li>
+            <li><a href="Registration.php" class="navbutton">Registration</a></li>
+            <li><a href="Golfers.php" class="navbutton">Golfers</a></li>
+            <li><a href="Donations.php" class="navbutton">Donations</a></li>
+            <li><a href="Statistics.php" class="navbutton">Statistics</a></li>
+            <li><a href="AdministrationLogin.html" class="navbutton">Administration Login</a></li>
+        </ul>
+    </nav>
+    <div id="StatisticsContent">
+        <h1>Current Event Stats</h1>
+        <h2>Total Raised:
+            <?php
+            // To show the value to the user
+            echo '$' . $eventPledgeTotal;
+            ?></h2><br>
+        <h2>Donations Leader:
+            <?php
+            // To show the value to the user
+            echo $pledgeLeaderFirst . " " . $pledgeLeaderLast;
+            ?>
+        </h2><br>
+        <h2>Average Donation:
+            <?php
+            // To show the value to the user
+            echo $golfersCount;
+            ?>
+        </h2><br>
+</body>
+
+</html>

@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
     $amount = $_POST['amount'];
     $method = $_POST['method'];
     $status = "unpaid";
-    if($method == "credit card"){
+    if ($method == "credit card") {
         $status = "paid";
     }
 
@@ -51,8 +51,7 @@ if (isset($_POST['submit'])) {
     // which says the data is inserted successfully
     if (mysqli_query($con, $sql_insert)) {
         echo '<script>alert("Product added successfully")</script>';
-    }
-    else {
+    } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($con);
     }
 }
@@ -92,6 +91,7 @@ if (isset($_POST['submit'])) {
         <br>
         <nav class="Navigation">
             <ul>
+                <li><a href="Golfathon.php" class="navbutton">Home</a></li>
                 <li><a href="Registration.php" class="navbutton">Registration</a></li>
                 <li><a href="Golfers.php" class="navbutton">Golfers</a></li>
                 <li><a href="Donations.php" class="navbutton">Donations</a></li>

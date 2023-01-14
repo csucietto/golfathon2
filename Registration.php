@@ -43,7 +43,7 @@ if (isset($_POST['submit'])) {
     // which says the data is inserted successfully
     if (mysqli_query($con, $sqlInsertGolfer)) {
         $golferid = mysqli_insert_id($con);
-        echo "<h1> You have successfully registered for Golfathon!</h1>";  
+        echo "<h1> You have successfully registered for Golfathon!</h1>";
     } else {
         echo "Error: " . $sql . "<br>" . $con->error;
     }
@@ -59,7 +59,7 @@ if (isset($_POST['submit'])) {
     // a javascript alert message is displayed
     // which says the data is inserted successfully
     if (mysqli_query($con, $sqlInsertGolferEvent)) {
-        echo "<h1> You have successfully registered for the current event!</h1>";  
+        echo "<h1> You have successfully registered for the current event!</h1>";
     } else {
         echo "Error: " . $sql . "<br>" . $con->error;
     }
@@ -98,6 +98,7 @@ if (isset($_POST['submit'])) {
         <br>
         <nav class="Navigation">
             <ul>
+                <li><a href="Golfathon.php" class="navbutton">Home</a></li>
                 <li><a href="Registration.php" class="navbutton">Registration</a></li>
                 <li><a href="Golfers.php" class="navbutton">Golfers</a></li>
                 <li><a href="Donations.php" class="navbutton">Donations</a></li>

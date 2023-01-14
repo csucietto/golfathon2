@@ -2,45 +2,47 @@
 
 <html>
 
-	<head>
-		<!--
+<head>
+	<!--
 		Name: Caleb Sucietto
 		Class: IT-117-400 Web-App
 		Abstract: Golfathon
 		-->
-		<title>Assignment6</title>
-		<meta charset=utf-8>
-		<link rel="stylesheet" href="golfathon.css">
-		<script src= "http://cdnjs.cloudfare.com/ajax/libs/html5shiv/3.6/html5shiv/min.js"></script>
-	</head>
-	
-	<body>
-		<b>Golfathon</b> 
-		<br>
-		<br>
-		<nav class="Navigation">
-		<ul>
-		<li><a href ="Registration.php"class= "navbutton">Registration</a></li>
-		<li><a href ="Golfers.php"class= "navbutton">Golfers</a></li>
-		<li><a href ="Donations.php"class= "navbutton">Donations</a></li>
-		<li><a href ="Statistics.php"class= "navbutton">Statistics</a></li>
-		<li><a href ="AdministrationLogin.html"class= "navbutton">Administration Login</a></li>
-		</ul>
-		</nav>
-			
-			<div id="AdminContent">
-				<form name="loginForm" id="form" action="NewEvent.php" method="POST">
-                <p>  
-                    <label> Event Year: </label>  
-					<input type="number" id="Eventyear" name="EventYear" />
-                </p>
-  
-                <p>     
-					<input type="submit" id="btn" value="NewEvent" />
-                </p>  
-            </form>  
+	<title>Assignment6</title>
+	<meta charset=utf-8>
+	<link rel="stylesheet" href="golfathon.css">
+	<script src="http://cdnjs.cloudfare.com/ajax/libs/html5shiv/3.6/html5shiv/min.js"></script>
+</head>
 
-			</div>
-			
-	</body>
+<body>
+	<b>Golfathon</b>
+	<br>
+	<br>
+	<nav class="Navigation">
+		<ul>
+			<li><a href="Golfathon.php" class="navbutton">Home</a></li>
+			<li><a href="Registration.php" class="navbutton">Registration</a></li>
+			<li><a href="Golfers.php" class="navbutton">Golfers</a></li>
+			<li><a href="Donations.php" class="navbutton">Donations</a></li>
+			<li><a href="Statistics.php" class="navbutton">Statistics</a></li>
+			<li><a href="AdministrationLogin.html" class="navbutton">Administration Login</a></li>
+		</ul>
+	</nav>
+
+	<div id="AdminContent">
+		<form name="loginForm" id="form" action="NewEvent.php" method="POST">
+			<p>
+				<label> Event Year: </label>
+				<input type="number" id="Eventyear" name="EventYear" />
+			</p>
+
+			<p>
+				<input type="submit" id="btn" value="NewEvent" />
+			</p>
+		</form>
+
+	</div>
+
+</body>
+
 </html>

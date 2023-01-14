@@ -64,6 +64,7 @@ if (isset($_POST['submit'])) {
         <br>
         <nav class="Navigation">
             <ul>
+                <li><a href="Golfathon.php" class="navbutton">Home</a></li>
                 <li><a href="Registration.php" class="navbutton">Registration</a></li>
                 <li><a href="Golfers.php" class="navbutton">Golfers</a></li>
                 <li><a href="Donations.php" class="navbutton">Donations</a></li>
