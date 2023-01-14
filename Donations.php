@@ -13,7 +13,10 @@ $all_golfers = mysqli_query($con, $sqlSelectGolfers);
 $sqlSelectEvents = "Select EventID from events2 WHERE EventYear = (SELECT max(EventYear) FROM events2)";
 $currentEvents = mysqli_query($con, $sqlSelectEvents);
 $row = mysqli_fetch_array($currentEvents, MYSQLI_ASSOC);
-$currentEvent = array_pop(array_reverse($row));;
+$row = array_reverse($row);
+
+$currentEvent = array_pop($row);
+
 
 
 // The following code checks if the submit button is clicked
