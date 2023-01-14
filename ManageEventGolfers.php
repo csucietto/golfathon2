@@ -94,9 +94,9 @@ if (isset($_POST['submit'])) {
         <nav class="Navigation">
             <ul>
                 <li><a href="../Registration.php" class="navbutton">Registration</a></li>
-                <li><a href="../Golfer.html" class="navbutton">Golfers</a></li>
+                <li><a href="../Golfers.php" class="navbutton">Golfers</a></li>
                 <li><a href="../Donations.php" class="navbutton">Donations</a></li>
-                <li><a href="../Statistics.html" class="navbutton">Statistics</a></li>
+                <li><a href="../Statistics.php" class="navbutton">Statistics</a></li>
                 <li><a href="../AdministrationLogin.html" class="navbutton">Administration Login</a></li>
             </ul>
         </nav>
