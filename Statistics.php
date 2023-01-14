@@ -87,13 +87,13 @@ $sqlSelectGolfers2 = "Select golfers.golfers2.FirstName, golfers2.LastName, golf
                         /* Check if the two rows should switch place,
                         based on the direction, asc or desc: */
                         if (dir == "asc") {
-                            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                            if (x.innerHTML.toLowerCase().substring(1) > y.innerHTML.toLowerCase().substring(1)) {
                                 // If so, mark as a switch and break the loop:
                                 shouldSwitch = true;
                                 break;
                             }
                         } else if (dir == "desc") {
-                            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                            if (x.innerHTML.toLowerCase().substring(1) < y.innerHTML.toLowerCase().substring(1)) {
                                 // If so, mark as a switch and break the loop:
                                 shouldSwitch = true;
                                 break;
@@ -150,7 +150,7 @@ $sqlSelectGolfers2 = "Select golfers.golfers2.FirstName, golfers2.LastName, golf
             <h2>Average Donation:
                 <?php
                 // To show the value to the user
-                echo '$' . $eventPledgeAverage;
+                echo '$' . round($eventPledgeAverage, 2);
                 ?>
             </h2><br>
             <h2>Leaderboard:</h2><br>
@@ -184,6 +184,12 @@ $sqlSelectGolfers2 = "Select golfers.golfers2.FirstName, golfers2.LastName, golf
                         </td>
                         <td>
                             <?php
+                            echo $golfer["Handicap"];
+                            // To show the golfer's handicap to the user
+                            ?>
+                        </td>
+                        <td>
+                            <?php
                             //Get latest event from events table
                             $sqlSelectPledgeAmount = "Select SUM(Amount) from donations WHERE EventID = '$currentEvent' AND GolferID = '$golfer[GolferID]'";
                             $all_pledges = mysqli_query($con, $sqlSelectPledgeAmount);
@@ -193,12 +199,6 @@ $sqlSelectGolfers2 = "Select golfers.golfers2.FirstName, golfers2.LastName, golf
 
                             // To show the value to the user
                             echo '$' . $pledgeTotal;
-                            ?>
-                        </td>
-                        <td>
-                            <?php
-                            echo $golfer["Handicap"];
-                            // To show the golfer's handicap to the user
                             ?>
                         </td>
                         <td>
