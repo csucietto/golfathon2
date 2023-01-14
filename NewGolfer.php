@@ -27,13 +27,11 @@
         
    }  
 
-			
+		sssssssssssssssssss	
 			
 			$intGolferID = mysqli_insert_id($con);
 
     
-        
-
 
 			            $sql = "Select EventID from Events2 WHERE EventYear = (SELECT max(EventYear) FROM Events2)";  
             $result = mysqli_query($con, $sql);  
