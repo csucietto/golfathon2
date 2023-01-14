@@ -135,7 +135,9 @@ if (isset($_POST['submit'])) {
                             $sqlSelectPledgeAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear' AND GolferID = '$golfer[GolferID]'";
                             $all_pledges = mysqli_query($con, $sqlSelectPledgeAmount);
                             $row = mysqli_fetch_array($all_pledges, MYSQLI_ASSOC);
-                            $pledgeTotal = array_pop(array_reverse($row));
+                            $row = array_reverse($row);
+                            $pledgeTotal = array_pop($row);
+
                             // To show the value to the user
                             echo `$` . $pledgeTotal;
                             ?>
@@ -146,7 +148,9 @@ if (isset($_POST['submit'])) {
                             $sqlSelectDonationsAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear' AND GolferID = '$golfer[GolferID]' AND Status = 'paid'";
                             $all_donations = mysqli_query($con, $sqlSelectDonationsAmount);
                             $row = mysqli_fetch_array($all_donations, MYSQLI_ASSOC);
-                            $donationsTotal = array_pop(array_reverse($row));
+                            $row = array_reverse($row);
+                            $donationsTotal = array_pop($row);
+
                             // To show the value to the user
                             echo `$` . $donationsTotal;
                             ?>
