@@ -12,7 +12,7 @@ $all_golfers = mysqli_query($con, $sqlSelectGolfers);
 //Get latest event from events table
 $sqlSelectEvents = "Select EventID from events2 WHERE EventYear = (SELECT max(EventYear) FROM events2)";
 $currentEvents = mysqli_query($con, $sqlSelectEvents);
-$row = mysqli_fetch_array($currentEvents, MYSQLI_ASSOC);  
+$row = mysqli_fetch_array($currentEvents, MYSQLI_ASSOC);
 
 // The following code checks if the submit button is clicked
 // and inserts the data in the database accordingly
@@ -81,16 +81,16 @@ if (isset($_POST['submit'])) {
         <br>
         <nav class="Navigation">
             <ul>
-                <li><a href="Registration.html" class="navbutton">Registration</a></li>
+                <li><a href="Registration.php" class="navbutton">Registration</a></li>
                 <li><a href="Golfer.html" class="navbutton">Golfers</a></li>
-                <li><a href="Donations.html" class="navbutton">Donations</a></li>
+                <li><a href="Donations.php" class="navbutton">Donations</a></li>
                 <li><a href="Statistics.html" class="navbutton">Statistics</a></li>
                 <li><a href="AdministrationLogin.html" class="navbutton">Administration Login</a></li>
             </ul>
         </nav>
         <div id="DonationContent">
 
-            <form name="donationForm" id="form" action="donation.php" method="POST">
+            <form name="donationForm" id="form" method="POST">
 
                 <b>Donations</b>
 
@@ -195,14 +195,14 @@ if (isset($_POST['submit'])) {
                             <option value="<?php echo $golfer["GolferID"];
                                             // The value we usually set is the primary key
                                             ?>">
-                                <?php 
-                                    echo $golfer["FirstName"];
-                                    echo $golfer["LastName"];
-                                    // To show the category name to the user
+                                <?php
+                                echo $golfer["FirstName"];
+                                echo $golfer["LastName"];
+                                // To show the category name to the user
                                 ?>
                             </option>
                         <?php
-                            endwhile;
+                        endwhile;
                         // While loop must be terminated
                         ?>
                     </select>
@@ -221,7 +221,7 @@ if (isset($_POST['submit'])) {
                     </select>
                 </p>
                 <p>
-                    <input class="button" type="submit" id="submitbtn" value="Submit" />
+                    <input class="button" type="submit" id="submitbtn" value="Donate" />
                     <input class="button" type="reset" id="clearbtn" value="Clear" />
                 </p>
 
@@ -230,17 +230,6 @@ if (isset($_POST['submit'])) {
     </body>
 
     </html>
-
-
-    <form method="POST">
-        <label>Name of Product:</label>
-        <input type="text" name="Product_name" required><br>
-        <label>Select a Category</label>
-
-        <br>
-        <input type="submit" value="submit" name="submit">
-    </form>
-    <br>
 </body>
 
 </html>
