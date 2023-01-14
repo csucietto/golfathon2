@@ -146,7 +146,7 @@ if (isset($_POST['submit'])) {
                 echo '$' . $eventPaidTotal;
                 ?>
             </h1>
-            <table>
+            <table class="center">
                 <tr>
                     <th>Golfer Name</th>
                     <th>Total Pledged</th>

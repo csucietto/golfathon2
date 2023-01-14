@@ -89,7 +89,7 @@ $sqlSelectGolfers2 = "Select golfers.golfers2.FirstName, golfers2.LastName, golf
         </h2><br>
         <h2>Leaderboard:</h2><br>
 
-        <table id="golferStats">
+        <table id="golferStats" class="center">
             <tr>
                 <th>Rank</th>
                 <th>Golfer Name</th>

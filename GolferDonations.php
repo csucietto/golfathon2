@@ -56,7 +56,7 @@ $all_donations = mysqli_query($con, $sqlSelectDonations);
             </ul>
         </nav>
         <div class="content">
-            <table>
+            <table class="center">
                 <tr>
                     <th>Donor Name</th>
                     <th>Email</th>

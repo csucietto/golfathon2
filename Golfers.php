@@ -54,7 +54,7 @@ $all_golfers = mysqli_query($con, $sqlSelectGolfers);
             </ul>
         </nav>
         <div class="content">
-            <table>
+            <table class="center">
                 <tr>
                     <th>Golfer Name</th>
                     <th>Email</th>
