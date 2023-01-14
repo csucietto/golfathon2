@@ -9,7 +9,7 @@ $con = mysqli_connect("localhost", "root", "", "golfathon");
 $sqlSelectEvents = "SELECT * FROM events2";
 $all_events = mysqli_query($con, $sqlSelectEvents);
 
-    $selectedYear ='';
+$selectedYear = '';
 
 //Get latest event from events table
 $sqlSelectEventPledgeAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear'";
@@ -25,11 +25,11 @@ $paidRow = mysqli_fetch_array($all_eventPaid, MYSQLI_ASSOC);
 $paidRow = array_reverse($paidRow);
 $eventPaidTotal = array_pop($paidRow);
 
-    //Get golferevent pairings from the selected year
-	$sqlSelectGolfers = "Select * from golfers2 WHERE GolferID in (Select GolferID from golferevent WHERE EventID = '$selectedYear')";
+//Get golferevent pairings from the selected year
+$sqlSelectGolfers = "Select * from golfers2 WHERE GolferID in (Select GolferID from golferevent WHERE EventID = '$selectedYear')";
 
-        $all_golfers = mysqli_query($con, $sqlSelectGolfers);
-    
+$all_golfers = mysqli_query($con, $sqlSelectGolfers);
+
 
 
 
@@ -38,25 +38,24 @@ $eventPaidTotal = array_pop($paidRow);
 if (isset($_POST['submit'])) {
     $selectedYear = $_POST['year'];
 
-//Get latest event from events table
-$sqlSelectEventPledgeAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear'";
-$all_eventPledges = mysqli_query($con, $sqlSelectEventPledgeAmount);
-$pledgesRow = mysqli_fetch_array($all_eventPledges, MYSQLI_ASSOC);
-$pledgesRow = array_reverse($pledgesRow);
-$eventPledgeTotal = array_pop($pledgesRow);
+    //Get latest event from events table
+    $sqlSelectEventPledgeAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear'";
+    $all_eventPledges = mysqli_query($con, $sqlSelectEventPledgeAmount);
+    $pledgesRow = mysqli_fetch_array($all_eventPledges, MYSQLI_ASSOC);
+    $pledgesRow = array_reverse($pledgesRow);
+    $eventPledgeTotal = array_pop($pledgesRow);
 
-//Get latest event from events table
-$sqlSelectEventPaidAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear' and Status = 'paid'";
-$all_eventPaid = mysqli_query($con, $sqlSelectEventPaidAmount);
-$paidRow = mysqli_fetch_array($all_eventPaid, MYSQLI_ASSOC);
-$paidRow = array_reverse($paidRow);
-$eventPaidTotal = array_pop($paidRow);
+    //Get latest event from events table
+    $sqlSelectEventPaidAmount = "Select SUM(Amount) from donations WHERE EventID = '$selectedYear' and Status = 'paid'";
+    $all_eventPaid = mysqli_query($con, $sqlSelectEventPaidAmount);
+    $paidRow = mysqli_fetch_array($all_eventPaid, MYSQLI_ASSOC);
+    $paidRow = array_reverse($paidRow);
+    $eventPaidTotal = array_pop($paidRow);
 
     //Get golferevent pairings from the selected year
-	$sqlSelectGolfers = "Select * from golfers2 WHERE GolferID in (Select GolferID from golferevent WHERE EventID = '$selectedYear')";
+    $sqlSelectGolfers = "Select * from golfers2 WHERE GolferID in (Select GolferID from golferevent WHERE EventID = '$selectedYear')";
 
-        $all_golfers = mysqli_query($con, $sqlSelectGolfers);
-    
+    $all_golfers = mysqli_query($con, $sqlSelectGolfers);
 }
 ?>
 
@@ -151,7 +150,6 @@ $eventPaidTotal = array_pop($paidRow);
                     <th>Golfer Name</th>
                     <th>Total Pledged</th>
                     <th>Total Collected</th>
-                    <th>Update Payment Status</th>
                 </tr>
                 <?php
                 // use a while loop to fetch data
@@ -164,10 +162,14 @@ $eventPaidTotal = array_pop($paidRow);
                 ?>
                     <tr>
                         <td>
-                            <?php
-                            echo $golfer["FirstName"] . " " . $golfer["LastName"];
-                            // To show the golfer's name to the user
-                            ?>
+                            <a href="<?php echo "ManageGolferDonations.php/?id=" . $golfer["GolferID"] . "&year=" . $selectedYear;
+                                        // The value we usually set is the primary key
+                                        ?>">
+                                <?php
+                                echo $golfer["FirstName"] . " " . $golfer["LastName"];
+                                // To show the golfer's name to the user
+                                ?>
+                            </a>
                         </td>
                         <td>
                             <?php
@@ -194,13 +196,6 @@ $eventPaidTotal = array_pop($paidRow);
                             // To show the value to the user
                             echo `$` . $donationsTotal;
                             ?>
-                        </td>
-                        <td>
-                            <a href="<?php echo "ManageGolferDonations.php/?" . $golfer["GolferID"];
-                                        // The value we usually set is the primary key
-                                        ?>">
-                                Donation Status
-                            </a>
                         </td>
                     </tr>
 
